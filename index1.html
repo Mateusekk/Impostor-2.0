@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gra w Oszusta</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="startScreen" class="screen active card">
+    <h1>Gra w Oszusta</h1>
+
+    <div class="addPlayerBox">
+        <input type="text" id="playerName" placeholder="Imię gracza">
+        <button onclick="addPlayer()">Dodaj</button>
+    </div>
+
+    <div id="playersList"></div>
+    <div class="infoLine">
+        Gracze: <span id="playerCount">0</span>
+    </div>
+
+    <input type="number" id="impostorCount" min="1" value="1" class="smallInput">
+
+    <label class="checkbox">
+        <input type="checkbox" id="showCategoryToImpostor">
+        Oszust widzi kategorię
+    </label>
+
+    <button class="primary" onclick="startGame()">Start</button>
+</div>
+
+<div id="playerScreen" class="screen card">
+    <h2 id="playerTitle"></h2>
+
+    <div class="holdButton"
+         ontouchstart="startHold()"
+         ontouchend="cancelHold()"
+         onmousedown="startHold()"
+         onmouseup="cancelHold()"
+         onmouseleave="cancelHold()">
+
+        Przytrzymaj 1.5s
+        <div id="progressBar"></div>
+    </div>
+
+    <div id="revealBox" class="revealBox"></div>
+
+    <button class="secondary" onclick="nextPlayer()">Dalej</button>
+</div>
+
+<div id="endScreen" class="screen card">
+    <h2>Koniec gry</h2>
+    <button class="primary" onclick="revealImpostor()">Pokaż wynik</button>
+    <div id="finalReveal" class="final"></div>
+    <button class="secondary" onclick="location.reload()">Nowa gra</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
